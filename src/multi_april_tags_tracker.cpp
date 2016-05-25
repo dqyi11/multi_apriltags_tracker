@@ -29,7 +29,11 @@ float convRadius(float radius) {
 void MultiAprilTagsTracker::imageCallback( const sensor_msgs::ImageConstPtr& msg) {
   cv_bridge::CvImagePtr cv_ptr;
   try {
+#ifdef MONO_COLOR
+    cv_ptr = cv_bridge::toCvCopy( msg, "mono8" ); 
+#else
     cv_ptr = cv_bridge::toCvCopy( msg, "bgr8" ); 
+#endif
   }
   catch( cv_bridge::Exception& e ) {
     ROS_ERROR( "cv_bridge exce[topm: %s", e.what() );
@@ -88,9 +92,13 @@ MultiAprilTagsTracker::~MultiAprilTagsTracker() {
 }
   
 std::vector<AprilTags::TagDetection> MultiAprilTagsTracker::extractTags( cv::Mat& image) {
+#ifdef MONO_COLOR
+   return mp_tag_detector->extractTags( image );
+#else
    cv::Mat gray_img;
    cvtColor( image, gray_img, CV_BGR2GRAY );
    return mp_tag_detector->extractTags( gray_img );
+#endif
 }
   
  
