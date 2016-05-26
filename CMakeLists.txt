@@ -41,6 +41,7 @@ add_message_files (
 generate_messages (
   DEPENDENCIES
   std_msgs
+  geometry_msgs
 )
 
 # Declare this project as a catkin package

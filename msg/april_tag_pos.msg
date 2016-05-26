@@ -1,4 +1,2 @@
-int8 id
-float32 x
-float32 y
-float32 orientation
+int8[] id
+geometry_msgs/Pose2D[] pose 
