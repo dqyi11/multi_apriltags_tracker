@@ -15,7 +15,7 @@ using namespace cv;
 
 #define MULTI_APRIL_TAGS_TRACKER_VIEW "Multi April Tags Tracker"
 #define APRIL_TAG_POS_MSG_NAME  "april_tag_pos"
-#define TARGET_POS_MSG_NAME     "target_pos"
+//#define TARGET_POS_MSG_NAME     "target_pos"
 
 #define PI 3.1415926
 #define REACH_THRESHOLD 30
@@ -65,7 +65,7 @@ void MultiAprilTagsTracker::imageCallback( const sensor_msgs::ImageConstPtr& msg
     m_pos_pub.publish(msg); 
   }
 
-  std::cout << "paint " << std::endl;
+  //std::cout << "paint " << std::endl;
   cv::imshow(MULTI_APRIL_TAGS_TRACKER_VIEW, cv_ptr->image );
   /*
   int key_value = cv::waitKey(30);
