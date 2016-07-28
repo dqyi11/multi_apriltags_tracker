@@ -72,6 +72,8 @@ target_link_libraries(multi_april_tags_tracker ${catkin_LIBRARIES}
                                                ${APRILTAGS_LIBRARY}
                      )
 
+add_dependencies(multi_april_tags_tracker multi_apriltags_tracker_generate_messages_cpp)
+
 install(TARGETS multi_april_tags_tracker
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
